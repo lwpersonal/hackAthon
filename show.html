@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>智课小书童-欢迎你！</title>
+  <link rel="stylesheet" href="./static/css/default.css">
+  <link rel="stylesheet" href="./static/css/show.css">
+</head>
+<body>
+  <div class="wrap js_wrap" >
+    <div class="man">
+      <img class="cloud-big center" src="./static/images/cloud-big.png" alt="">
+      <img class="body" src="./static/images/man.png" alt="">
+      <img class="xz" src="./static/images/xz.png" alt="">
+      <img class="cloud" src="./static/images/cloud.png" alt="">
+      <img class="cloud-left" src="./static/images/cloud-left.png" alt="">
+      <img class="cloud-right" src="./static/images/cloud-right.png" alt="">
+    </div>
+    <div class="fly">
+      <img class="fly-body" src="./static/images/pan.png" alt="">
+      <img class="fly-fire" src="./static/images/fire.png" alt="">
+    </div>
+    <div class="btn center js_btn">和小智结伴畅游</div>
+  </div>
+
+  <div class="wrap-2 js_wrap_2" style="display: none;">
+    <h3 class="wrap2-title">选择小智性格</h3>
+    <div class="wrap2-container js_list_box">
+      <div data-type="1" class="wrap-list">
+        <img src="./static/images/user1.jpg" alt="" />
+        <p>小姐姐</p>
+      </div>
+      <div data-type="2" class="wrap-list wrap-list2">
+        <img src="./static/images/user1.jpg" alt="" />
+        <p>萌妹子</p>
+      </div>
+      <div data-type="3" class="wrap-list">
+        <img src="./static/images/user1.jpg" alt="" />
+        <p>大叔</p>
+      </div>
+      <div data-type="4" class="wrap-list wrap-list2">
+        <img src="./static/images/user1.jpg" alt="" />
+        <p>小哥哥</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    ;(function(){
+      $('.js_btn').click(function() {
+        $('.js_wrap').hide()
+        $('.js_wrap_2').show()
+      })
+      $('[data-type]').click(function() {
+        window.open(location.protocol + '//' + location.host + '/chatRoom.html?character=' + $(this).attr('data-type') )
+      })
+    }());
+  </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>智课小书童-聊天室</title>
+  <link rel="stylesheet" type="text/css" href="./static/font/iconfont.css">
+  <link rel="stylesheet" href="./static/css/default.css">
+  <link rel="stylesheet" href="./static/css/chatRoom.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="content">
+
+      <div class="chat-container js_chat_container">
+
+        <div class="chat-item chat-item-left">
+          <img class="user-icon" src="./static/images/user-xz.jpg" alt="">
+          <div class="dialog-wrap">
+            <div class="chat-text">
+              <p>hello,小主人,我是你的小书童~</p >
+            </div>
+            <div class="arrow arrow-left"></div>
+          </div>
+        </div>
+
+        <div class="chat-item chat-item-right">
+          <div class="dialog-wrap">
+            <div class="chat-text">
+              <p>hello,小主人,我是你的小书童~hello,小主人,我是你的小书童~hello,小主人,我是你的小书童~hello,小主人,我是你的小书童~hello,小主人,我是你的小书童~</p >
+            </div>
+            <div class="arrow arrow-right"></div>
+          </div>
+          <img class="user-icon" src="./static/images/WenJW.jpg" alt="">
+        </div>
+
+        <div class="chat-item chat-item-right">
+          <div class="dialog-wrap">
+            <div class="chat-text">
+              <audio src="" controls></audio>
+            </div>
+            <div class="arrow arrow-right"></div>
+          </div>
+          <img class="user-icon" src="./static/images/WenJW.jpg" alt="">
+        </div>
+
+      </div>
+
+      <div class="operating-box">
+        <div class="operating-content js_change">
+          <i data-icon="input" class="iconfont ui-yuyin input-icon"></i>
+          <div data-input class="input-box">
+            <input id="chatInput" class="chat-input" type="text" />
+            <div class="line js_line"></div>
+          </div>
+
+          <i style="display: none;" data-icon="audio" class="iconfont ui-jianpan input-icon"></i>
+          <div style="display: none;" data-audio class="input-box">
+            <div class="audio-btn noSelect js_audio_btn">按住说话</div>
+          </div>
+          <div class="chat-send js_chat_send">发送</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="audio-modal js_audio_modal">
+      <img src="./static/images/audio.svg" alt="">
+      <p>正在录入语音 释放发送</p>
+    </div>
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="./static/scripts/MediaStreamRecorder.js"> </script>
+  <script src="./static/scripts/audioDemo.js"></script>
+  <script src="./static/scripts/chatRoom.js"></script>
+</body>
+</html>
