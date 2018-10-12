@@ -2,7 +2,7 @@
  * @Author: WenJW
  * @Date: 2018-10-12 14:36:13
  * @Last Modified by: WenJW
- * @Last Modified time: 2018-10-12 22:44:02
+ * @Last Modified time: 2018-10-13 02:18:12
  * @description
  */
 !(function(doc, win){
@@ -57,13 +57,12 @@
         character: _getUrlParam('character') || 1, // 1,2,3,4
         question: str
       }, function(res) {
-        var resStr = res.data.answer
-        var type = _getDataType(resStr)
-        if(type === 'string'){
-          return sendMsg(res.data.answer, 'left')
-        } else if(type === 'array') {
-          
+        var resStr = res.data.content
+        var imgIndex = res.data.type
+        if(imgIndex) {
+          // 切换图片
         }
+        return sendMsg(resStr, 'left')
       })
     }
   }
