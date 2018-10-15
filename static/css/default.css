@@ -103,3 +103,36 @@ a {
     -ms-user-select: none; 
     user-select: none;
   }
+
+.modal {
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.7);
+}
+.modal-float {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  /* background: pink; */
+}
+.modal-content {
+  position: absolute;
+  max-height: 300px;
+  overflow-y: scroll;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.chat-link {
+  color: #39f;
+}

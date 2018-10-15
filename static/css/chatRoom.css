@@ -127,7 +127,8 @@ body {
 }
 .chat-text {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   padding: 5px 0;
   min-height: 50px;
   text-align: left;

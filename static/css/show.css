@@ -37,7 +37,7 @@ body {
   width: 80%;
   height: 46px;
   border-radius: 23px;
-  margin: 140% 0 0;
+  margin: 132% 0 0;
   font-size:20px;
   font-family:PingFang-SC-Semibold;
   text-align: center;
@@ -184,6 +184,15 @@ body {
   margin: 0 auto;
   font-size: 10px;
 }
+.icon-face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 81% 0 0 35%;
+  color: #fff;
+  font-size: 35px;
+  font-weight: 600;
+}
 .center {
   position: absolute;
   left: 50%;
@@ -253,10 +262,32 @@ body {
 }
 
 /* 火箭 */
+@keyframes fly {
+  0% {
+    transform: translate(0, 60px);
+  }
+  20% {
+    transform: translate(-100px, 40px);
+  }
+  40% {
+    transform: translate(-200px, 0px);
+  }
+  50% {
+    transform: translate(-300px, -40px);
+  }
+  80% {
+    transform: translate(-454px, -70px);
+  }
+  100% {
+    transform: translate(-454px, -70px);
+  }
+}
 .fly {
   position: absolute;
+  animation: fly 7s ease-out 1s infinite normal;
+  -webkit-animation: fly 7s ease-out 1s infinite normal;
   top: 0;
-  left: 0;
+  right: 0;
   margin: 120% 0 0 12%;
 }
 .fly-body {
@@ -298,13 +329,17 @@ body {
   cursor: pointer;
   display: inline-block;
   width: 45%;
+  margin: 0 0 40px 0;
 }
 .wrap-list>img {
-  width: 100%;
-  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  /* border-radius: 50%; */
+  display: block;
+  margin: auto;
 }
 .wrap-list>p {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
   text-align: center;
   padding: 15px 20px;

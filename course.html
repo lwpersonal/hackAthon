@@ -17,32 +17,35 @@
       <div class="chat-container js_chat_container">
 
         <div class="chat-item chat-item-teacher">
-          <img class="user-icon" src="./static/images/user-xz.jpg" alt="">
-          <div class="dialog-wrap dialog-wrap-teacher">
-            <div class="chat-text">
-              <p>小主人,我是你的小书童~小主人,我是你的小书童~小主人,我是你的小书童~小主人,我是你的小书童~小主人,我是你的小书童~</p >
+          <img class="user-icon" src="./static/images/teacher.png" alt="">
+          
+          <div style="display: none;" class="dialog-wrap js_0 dialog-wrap-teacher">
+            <div class="chat-text js_teacher">
             </div>
             <div class="arrow arrow-top"></div>
           </div>
+
         </div>
 
         <div class="chat-item chat-item-left">
-          <div class="dialog-wrap dialog-wrap-left">
-            <div class="chat-text">
-              <p>hello,小主人,我是你的小书童~小主人,我是你的小书童~小主人</p >
+
+          <div style="display: none;" class="dialog-wrap js_1 dialog-wrap-left">
+            <div class="chat-text js_left">
             </div>
             <div class="arrow arrow-bottom arrow-btoom-left"></div>
           </div>
-          <img class="user-icon" src="./static/images/user-xz.jpg" alt="">
+
+          <img class="user-icon js_xz_icon" src="./static/images/user-icon-1.jpg" alt="">
         </div>
 
         <div class="chat-item chat-item-right">
-          <div class="dialog-wrap dialog-wrap-right">
-            <div class="chat-text">
-              <p>hello,小主人,我是你的小书童~小主人,我是你的小书童~小主人</p >
+          
+          <div style="display: none;" class="dialog-wrap js_2 dialog-wrap-right">
+            <div class="chat-text js_right">
             </div>
             <div class="arrow arrow-bottom arrow-btoom-right"></div>
           </div>
+          
           <img class="user-icon" src="./static/images/WenJW.jpg" alt="">
         </div>
 
@@ -53,31 +56,13 @@
       </div>
     </div>
   </div>
+
+  <div class="modal js_modal" style="display: none;">
+    <div class="modal-float js_hide"></div>
+    <div class="modal-content js_modal_content"></div>
+  </div>
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="./static/scripts/course.js"></script>
 </body>
 </html>
-
-
-
-<!-- 小智点击随机话 -->
-<!-- [
-  {
-    teacher: {
-      content: '内容',
-      modal: '弹窗'
-    },
-    left: 'content',
-    right: [ '' ]
-  },
-
-  {
-    teacher: {
-      content: '内容',
-      modal: '弹窗'
-    },
-    left: 'content',
-    right: [ '' ]
-  },
-] -->

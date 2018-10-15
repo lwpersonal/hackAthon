@@ -2,7 +2,7 @@
  * @Author: WenJW
  * @Date: 2018-10-12 14:36:13
  * @Last Modified by: WenJW
- * @Last Modified time: 2018-10-13 02:18:12
+ * @Last Modified time: 2018-10-13 12:28:50
  * @description
  */
 !(function(doc, win){
@@ -20,23 +20,28 @@
   function _getDataType (data) { 
     return Object.prototype.toString.call(data).toLowerCase().replace(/^\[object (\w+)\]$/, '$1')
   }
-  function sendMsg(str, type) {
+  function sendMsg(str, type, img) {
+    console.log(str)
     type = type || 'right'
     var dataType = 1
     var userImg = type === 'left' ? './static/images/user-xz.jpg' : './static/images/WenJW.jpg'
+    var requestStr = ''
+    if(img) { userImg = img }
     if(str.url) {
+      requestStr = ''
       dataType = 2 // 音频
       var msg = [
         '<div class="chat-item chat-item-' + type +'">',
         type === 'left' ? '<img class="user-icon" src="' + userImg +'" alt="">' : '',
         '<div class="dialog-wrap">',
         '<div class="chat-text">',
-        '<audio controls class="chat-auto" src="' + str.url + '"></audio>',
+        '<i class="iconfont ui-yuyin input-icon"></i>',
         '</div><div class="arrow arrow-' + type +'"></div></div>',
         type === 'right' ? '<img class="user-icon" src="' + userImg +'" alt="">' : '',
         '</div>'
       ].join('')
     } else {
+      requestStr = str
       var msg = [
         '<div class="chat-item chat-item-' + type +'">',
         type === 'left' ? '<img class="user-icon" src="' + userImg +'" alt="">' : '',
@@ -50,19 +55,23 @@
     }
     $('.js_chat_container').append(msg)
     scrollBottom()
-    if(type === 'right'){
+    if(type === 'right') {
       // 如果是用户发起聊天，处理小智的回话
+      console.log('requestStr', requestStr)
       callSay({
         type: dataType,
         character: _getUrlParam('character') || 1, // 1,2,3,4
-        question: str
+        question: requestStr
       }, function(res) {
-        var resStr = res.data.content
-        var imgIndex = res.data.type
-        if(imgIndex) {
-          // 切换图片
+        if(res.code === 0) {
+          var resStr = res.data.content
+          var imgIndex = res.data.type
+          var imgUrl = imgIndex ? './static/images/chat-' + imgIndex + '.jpg' : false
+          if(resStr) {
+            return sendMsg(resStr, 'left', imgUrl) }
+        } else {
+          return sendMsg('听不懂你在说什么！', 'left', imgUrl)
         }
-        return sendMsg(resStr, 'left')
       })
     }
   }
@@ -70,8 +79,9 @@
     console.log('start')
     $.ajax({
       type: 'POST',
-      url: 'http://118.25.210.140:3000/chat',
+      url: 'http://118.25.210.140:3000' + '/chat',
       dataType: 'json',
+      // contentType: 'application/json',
       data: options, // 1 文本；2 音频
 			success:function (res) {
         fn(res)
@@ -130,18 +140,14 @@
       var mediaRecorder = new MediaStreamRecorder(stream)
       mediaRecorder.mimeType = 'audio/wav' // check this line for audio/wav
       mediaRecorder.ondataavailable = function (blob) {
-          var blobURL = URL.createObjectURL(blob)
-          blobToDataURL(blob, function(res) {
-            console.log(res)
-            // base64
-            $('#audio').attr('src', res)
-          })
-          console.log('ssss')
-          console.log(blob)
-          console.log(blobURL)
-          sendMsg({ url: blobURL })
-          // mediaRecorder.save(blob, 'FileName.webm')
-          // $('#audio').attr('src', blobURL)
+        var blobURL = URL.createObjectURL(blob)
+        blobToDataURL(blob, function(res) {
+          console.log(res)
+          // base64
+          $('#audio').attr('src', res)
+          // sendMsg({ url: res })
+          mediaRecorder.save(blob, 'FileName.wav')
+        })
       }
       mediaRecorder.start(9999999)
       $('.js_audio_btn').on('touchend', function() {
@@ -153,8 +159,14 @@
     $('.js_audio_btn').on('touchstart', function(e) {
       console.log('touch-start')
       $('.js_audio_modal').addClass('audio-modal-active')
-      navigator.getUserMedia(mediaConstraints, onMediaSuccess, onMediaError)
+      // navigator.getUserMedia(mediaConstraints, onMediaSuccess, onMediaError)
       e.preventDefault()
+    })
+    $('.js_audio_btn').on('touchend', function(e) {
+      console.log('touch-start')
+      $('.js_audio_modal').removeClass('audio-modal-active')
+      // navigator.getUserMedia(mediaConstraints, onMediaSuccess, onMediaError)
+      return sendMsg({url: 'audio'}, 'right')
     })
   }
   function init(){
